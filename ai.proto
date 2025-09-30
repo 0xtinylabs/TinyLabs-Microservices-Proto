@@ -35,6 +35,7 @@ message GenerateJSONResponse {
     optional google.protobuf.Struct json = 1;
     optional string id = 2;
     optional string error = 3;
+    optional string text = 4;
 }
 
 

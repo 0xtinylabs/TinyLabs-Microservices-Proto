@@ -4,7 +4,7 @@ package farcaster.cast;
 
 message CastRequestEmbedCastID {
     string hash = 1;
-    int64 fid = 2;
+    int32 fid = 2;
 }
 
 message CastRequestEmbed {
@@ -16,14 +16,14 @@ message SendCastRequest {
     optional string text = 2;
     optional string hash = 3;
     optional string idem = 4;
-    optional int64 authorFid = 5;
-    int64 fid = 6;
+    optional int32 authorFid = 5;
+    int32 fid = 6;
     string type = 7;
     optional CastRequestEmbed embeds = 8;
 }
 
 message CastResponseCastAuthor {
-    int64 fid = 1;
+    int32 fid = 1;
 }
 
 message CastResponseCast {

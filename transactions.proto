@@ -14,7 +14,7 @@ message LogTransactionRequest {
     string txHash = 1;
     string connectionKey = 2;
     string connectionValue = 3;
-    bool transactionStatus = 4;
+    TransactionStatus transactionStatus = 4;
     optional google.protobuf.Struct transactionParams = 5;
     optional google.protobuf.Struct transactionResultParams = 6;
     optional string errorMessage = 7;    
@@ -26,7 +26,7 @@ message LogTransactionResponse {
 
 message UpdateLoggedTransactionStatusRequest {
     string txHash = 1;
-    bool transactionStatus = 4;
+    TransactionStatus transactionStatus = 4;
     optional string errorMessage = 7;    
 }
 

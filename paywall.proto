@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package paywall;
+
+enum OrderCurrency {
+  USDC = 0;
+}
+
+enum OrderPackages {
+  BEGINNER = 0;
+  ADVANCED = 1;
+  EXPERT = 2;
+}
+
+enum CheckoutStatus {
+  SUCCESS = 0;
+  NEED_REFUND = 1;
+  FAIL = 2;
+}
+
+
+message Transaction {
+  string from = 1;
+  string to = 2;
+  string value = 3;
+  string gasLimit = 4;
+  optional  string data = 5;
+  int32 nonce = 6;
+}
+
+
+
+message CreateOrderRequest {
+  string userId = 1;
+  float amount = 3;
+  OrderCurrency currency = 4;
+  string fromWalletAddress = 5; 
+  float entityAmount = 6;
+}
+
+message CreateTransactionRequest {
+  string from = 1;
+  string to = 2;
+  optional string data = 5;
+
+}
+
+message CreateTransactionResponse {
+  Transaction  transaction = 1;
+}
+
+message CreateOrderResponse {
+  string orderId = 1; 
+  Transaction  transaction = 6;
+}
+
+
+message ConfirmOrderRequest {
+  string orderId = 1; 
+  string userId = 2;
+  string txHash = 3; 
+  OrderPackages package = 4; 
+} 
+
+message ConfirmOrderResponse {
+  CheckoutStatus status = 1;
+}   
+
+message CheckoutOrderRequest {
+  string orderId = 1;
+  OrderPackages package = 2;
+  bool buyStatus = 3;
+}
+
+message CheckoutOrderResponse {
+  CheckoutStatus status = 1;
+}
+
+service PaywallServicePackage {
+  rpc createOrder (CreateOrderRequest) returns (CreateOrderResponse);
+  rpc confirmOrder (ConfirmOrderRequest) returns (ConfirmOrderResponse);
+  rpc checkoutOrder (CheckoutOrderRequest) returns (CheckoutOrderResponse);
+}

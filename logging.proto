@@ -23,6 +23,6 @@ message AddLogResponse {
 }
 
 
-service LogService {
+service LoggingService {
     rpc add (AddLogRequest) returns (AddLogResponse);
 }

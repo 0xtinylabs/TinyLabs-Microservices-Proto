@@ -10,10 +10,17 @@ enum Urgency {
     LOW = 3;
 }
 
+enum Environment {
+    PRODUCTION = 0;
+    STAGING = 1;
+    DEVELOPMENT = 2;
+    LOCAL_DEVELOPMENT = 3;
+}
+
 message AddLogRequest {
     string data = 1;
     string service_name = 2;
-    string service_environment = 3;
+    Environment service_environment = 3;
     string title = 4;
     Urgency urgency = 5;
 }

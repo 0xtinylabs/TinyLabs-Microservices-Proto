@@ -1,4 +1,7 @@
+
 syntax = "proto3";
+
+package logging;
 
 enum Urgency {
     URGENT = 0;

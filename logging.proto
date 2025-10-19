@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+enum Urgency {
+    URGENT = 0;
+    HIGH = 1;
+    MEDIUM = 2;
+    LOW = 3;
+}
+
+message AddLogRequest {
+    string data = 1;
+    string service_name = 2;
+    string service_environment = 3;
+    string title = 4;
+    Urgency urgency = 5;
+}
+
+message AddLogResponse {
+    bool success = 1;
+}
+
+
+service LogService {
+    rpc addLog (AddLogRequest) returns (AddLogResponse);
+}

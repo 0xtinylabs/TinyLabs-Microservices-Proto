@@ -10,6 +10,13 @@ enum Urgency {
     LOW = 3;
 }
 
+enum Type {
+    INFO = 0;
+    ERROR = 1;
+    WARNING = 2;
+    SERVER_START = 3;
+}
+
 enum Environment {
     PRODUCTION = 0;
     STAGING = 1;
@@ -23,6 +30,7 @@ message AddLogRequest {
     Environment serviceEnvironment = 3;
     string title = 4;
     Urgency urgency = 5;
+    Type type = 6;
 }
 
 message AddLogResponse {

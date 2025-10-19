@@ -19,8 +19,8 @@ enum Environment {
 
 message AddLogRequest {
     string data = 1;
-    string service_name = 2;
-    Environment service_environment = 3;
+    string serviceName = 2;
+    Environment serviceEnvironment = 3;
     string title = 4;
     Urgency urgency = 5;
 }

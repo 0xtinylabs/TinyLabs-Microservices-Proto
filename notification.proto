@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package notification;
+
+enum NotificationType {
+    TELEGRAM = 0;
+}
+
+enum TelegramBotTypes {
+    MAIN = 0;
+    USER = 1;
+}
+
+message SendNotificationRequest {
+
+    string message = 1;
+    NotificationType type = 2;
+    TelegramBotTypes botName = 3;
+}
+
+message SendNotificationResponse {
+    bool success = 1;
+}
+
+
+service NotificationService {
+    rpc sendNotification (SendNotificationRequest) returns (SendNotificationResponse);
+}

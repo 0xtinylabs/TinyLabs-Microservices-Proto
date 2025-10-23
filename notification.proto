@@ -11,11 +11,27 @@ enum TelegramBotTypes {
     USER = 1;
 }
 
-message SendNotificationRequest {
+enum NotificationButtonType {
+    LINK = 0;
+    FUNCTION = 1;
+}
 
+message NotificationButton {
+    string label = 1;
+    optional string data = 2;
+    NotificationButtonType type = 3;
+}
+
+message NotificationExtrasType {
+    repeated  NotificationButton buttons = 1;
+}
+
+message SendNotificationRequest {
     string message = 1;
     NotificationType type = 2;
     TelegramBotTypes botName = 3;
+    optional NotificationExtrasType extras = 4;
+    string to = 5;
 }
 
 message SendNotificationResponse {
@@ -24,5 +40,5 @@ message SendNotificationResponse {
 
 
 service NotificationService {
-    rpc sendNotification (SendNotificationRequest) returns (SendNotificationResponse);
+    rpc send (SendNotificationRequest) returns (SendNotificationResponse);
 }

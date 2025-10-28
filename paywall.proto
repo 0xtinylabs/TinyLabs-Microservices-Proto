@@ -52,6 +52,7 @@ message CreateTransactionResponse {
 message CreateOrderResponse {
   string orderId = 1; 
   Transaction  transaction = 6;
+  bool success = 2;
 }
 
 

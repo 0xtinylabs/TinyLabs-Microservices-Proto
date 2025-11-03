@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package dex;
+
+option go_package = "dex/proto";
+
+enum TokenAddingType {
+    DUPLICATE = 0;
+    FIRST_TIME = 1;
+    ADD_ERROR = 2;
+}
+
+enum TokenRemovingType {
+    STILL_CALCULATES = 0;
+    ALL_CLEAR = 1;
+    REMOVE_ERROR = 2;
+}
+
+message AddTokenToDexRequest {
+    string tokenAddress = 1;
+    optional string name = 2;
+    optional string symbol = 3;
+    optional string image = 4; 
+    optional string poolAddress = 5; 
+}
+
+message AddTokenToDexResponse {
+    bool success = 1;
+    TokenAddingType type = 2;
+    string Message = 3;
+}
+
+message RemoveTokenFromDexRequest {
+    string tokenAddress = 1;
+}
+
+message Token {
+    string name = 1;
+    string symbol  = 2;
+    string price = 3;
+    string volume = 4;
+    string imageUrl = 5;
+    string address = 6;
+    string poolAddress = 7;
+    string supply = 8;
+}
+
+message RemoveTokenFromDexResponse {
+    bool success = 1;
+    TokenRemovingType type = 2;
+    string Message = 3;
+}
+message GetTokenRequest {
+    string tokenAddress = 1;
+}
+
+message GetTokenResponse {
+    Token token = 1;
+}
+
+
+message GetTokensRequest {}
+
+
+message GetTokensResponse {
+    repeated Token tokens = 1;
+}
+
+service Dex {
+    rpc GetToken (GetTokenRequest) returns (GetTokenResponse);
+    rpc GetTokens (GetTokensRequest) returns (GetTokensResponse);
+    rpc AddTokenToDex (AddTokenToDexRequest) returns (AddTokenToDexResponse);
+    rpc RemoveTokenFromDex (RemoveTokenFromDexRequest) returns (RemoveTokenFromDexResponse);
+}

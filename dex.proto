@@ -39,11 +39,12 @@ message Token {
     string symbol  = 2;
     string price = 3;
     string volume = 4;
-    string imageUrl = 5;
-    string address = 6;
-    string poolAddress = 7;
-    string supply = 8;
-}
+    string calculatedVolume = 5;
+    string imageUrl = 6;
+    string address = 7;
+    string poolAddress = 8;
+    string supply = 9; 
+ }
 
 message RemoveTokenFromDexResponse {
     bool success = 1;
@@ -54,12 +55,23 @@ message GetTokenRequest {
     string tokenAddress = 1;
 }
 
+message GetTokenPriceRequest {
+    string tokenAddress = 1;
+}
+
+message GetTokenPriceResponse {
+    bool success = 1;
+    string price = 2;
+    string volume = 3;
+}
+
 message GetTokenResponse {
     Token token = 1;
 }
 
 
 message GetTokensRequest {}
+
 
 
 message GetTokensResponse {
@@ -69,6 +81,7 @@ message GetTokensResponse {
 service Dex {
     rpc GetToken (GetTokenRequest) returns (GetTokenResponse);
     rpc GetTokens (GetTokensRequest) returns (GetTokensResponse);
+    rpc GetTokenPrice (GetTokenPriceRequest) returns (GetTokenPriceResponse);
     rpc AddTokenToDex (AddTokenToDexRequest) returns (AddTokenToDexResponse);
     rpc RemoveTokenFromDex (RemoveTokenFromDexRequest) returns (RemoveTokenFromDexResponse);
 }

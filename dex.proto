@@ -23,6 +23,7 @@ message AddTokenToDexRequest {
     optional string image = 4; 
     optional string poolAddress = 5; 
     optional string circulatedSupply = 6;
+    optional string pairAddress = 7;
 }
 
 message AddTokenToDexResponse {
@@ -47,6 +48,7 @@ message Token {
     string poolAddress = 8;
     string supply = 9; 
     string circulatedSupply = 10;
+    string pairAddress = 11;
  }
 
 message RemoveTokenFromDexResponse {

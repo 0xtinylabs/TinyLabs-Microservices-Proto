@@ -98,6 +98,7 @@ message CumulativeData {
   float amount = 1;
   float entityAmount = 2;
   int64 count = 3;
+  int64 users = 4;
 }
 
 message GetOrdersCumulativeDataResponse {

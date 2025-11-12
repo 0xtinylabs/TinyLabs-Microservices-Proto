@@ -1,6 +1,12 @@
 syntax = "proto3";
 
+import "google/protobuf/struct.proto";
+
+
 package paywall;
+
+option go_package = "paywall/proto";
+
 
 enum OrderCurrency {
   USDC = 0;
@@ -77,8 +83,31 @@ message CheckoutOrderResponse {
   CheckoutStatus status = 1;
 }
 
+message GetOrdersRequest {
+}
+
+message GetOrdersResponse {
+  repeated google.protobuf.Struct orders = 1;
+}
+
+message GetOrdersCumulativeDataRequest {
+  optional string appName = 1;
+}
+
+message CumulativeData {
+  float amount = 1;
+  float entityAmount = 2;
+  int64 count = 3;
+}
+
+message GetOrdersCumulativeDataResponse {
+  CumulativeData data = 1;
+}
+
 service PaywallServicePackage {
   rpc createOrder (CreateOrderRequest) returns (CreateOrderResponse);
   rpc confirmOrder (ConfirmOrderRequest) returns (ConfirmOrderResponse);
   rpc checkoutOrder (CheckoutOrderRequest) returns (CheckoutOrderResponse);
+  rpc getOrders (GetOrdersRequest) returns (GetOrdersResponse);
+  rpc getOrderCumulativeData (GetOrdersCumulativeDataRequest) returns (GetOrdersCumulativeDataResponse);
 }

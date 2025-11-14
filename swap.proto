@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+
+package swap;
+
+enum CHAIN {
+    BASE = 0;
+    SOLANA = 1;
+}
+
+message SwapRequest {
+    string fromTokenAddress = 1;
+    string toTokenAddress = 2;
+    double amount = 3;
+    CHAIN chain = 4;
+    string privateKey = 6;
+    optional string environment = 7; 
+    optional string app = 8; 
+    optional int64 slippage = 9; 
+}
+
+message SwapResponse {
+    optional string tx = 1;
+    optional string txId = 2;
+    optional google.protobuf.Struct error = 3;
+    bool success = 4;
+}
+
+service SwapService {
+    rpc swap (SwapRequest) returns (SwapResponse);
+}

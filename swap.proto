@@ -24,8 +24,8 @@ message SwapResponse {
     optional string txId = 2;
     optional google.protobuf.Struct error = 3;
     bool success = 4;
-    string sellAmount = 5;
-    string buyAmount = 6;
+    optional string sellAmount = 5;
+    optional  string buyAmount = 6;
 }
 
 service SwapService {

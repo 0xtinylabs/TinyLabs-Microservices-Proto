@@ -35,7 +35,7 @@ message SwapResponse {
 
 message GetFeeRequest {
     string to = 1;
-    string value = 2;
+    optional string value = 2;
 }
 
 message GetFeeResponse {

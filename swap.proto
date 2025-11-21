@@ -42,7 +42,17 @@ message GetFeeResponse {
     bool success = 1;
 }
 
+message ApproveRequest {
+    string walletPrivateKey = 1;
+    string tokenAddress = 2;
+}
+
+message ApproveResponse {
+    bool success = 1;
+}
+
 service SwapService {
     rpc swap (SwapRequest) returns (SwapResponse);
     rpc getFee (GetFeeRequest) returns (GetFeeResponse);
+    rpc approve (ApproveRequest) returns (ApproveResponse);
 }

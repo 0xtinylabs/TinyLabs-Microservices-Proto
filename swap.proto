@@ -31,6 +31,7 @@ message SwapResponse {
     bool success = 4;
     optional string sellAmount = 5;
     optional  string buyAmount = 6;
+    optional string companyFee = 7;
 }
 
 message GetFeeRequest {

@@ -8,6 +8,11 @@ enum CHAIN {
     SOLANA = 1;
 }
 
+enum FeeResource {
+    COMPANY = 0;
+    SELF = 1;
+}
+
 message GetEthToWallet {
     string to = 1;
     string value = 2;
@@ -19,9 +24,12 @@ message SwapRequest {
     double amount = 3;
     CHAIN chain = 4;
     string privateKey = 6;
-    optional string environment = 7; 
-    optional string app = 8; 
-    optional int64 slippage = 9; 
+    optional FeeResource feeResource = 7;
+    optional string environment = 8; 
+    optional string app = 9; 
+    optional int64 slippage = 10; 
+    
+    
 }
 
 message SwapResponse {

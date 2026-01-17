@@ -18,11 +18,13 @@ message PromptMessage {
 message GenerateTextRequest  { 
      repeated PromptMessage messages = 1;
      optional float temperature = 2;
+     optional string apikey = 3; 
 } 
 
 message GenerateJSONRequest  { 
      repeated PromptMessage messages = 1;
      optional float temperature = 2;
+     optional string apikey = 3; 
 } 
 
 message GenerateTextResponse {

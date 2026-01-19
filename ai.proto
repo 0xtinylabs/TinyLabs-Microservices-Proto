@@ -52,5 +52,5 @@ message GenerateJSONResponse {
 service AIService {
     rpc generateText (GenerateTextRequest) returns (GenerateTextResponse);
     rpc generateJSON (GenerateJSONRequest) returns (GenerateJSONResponse);
-    rpc checkAPIKey (CheckAPIKeyRequest) returns (CheckAPIKeyResponse)
+    rpc checkAPIKey (CheckAPIKeyRequest) returns (CheckAPIKeyResponse);
 } 

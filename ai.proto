@@ -27,6 +27,14 @@ message GenerateJSONRequest  {
      optional string apikey = 3; 
 } 
 
+message CheckAPIKeyRequest {
+    string apiKey = 1;
+}
+
+message CheckAPIKeyResponse {
+    bool success = 1;
+}
+
 message GenerateTextResponse {
     optional string text = 1;
     optional string id = 2;
@@ -44,4 +52,5 @@ message GenerateJSONResponse {
 service AIService {
     rpc generateText (GenerateTextRequest) returns (GenerateTextResponse);
     rpc generateJSON (GenerateJSONRequest) returns (GenerateJSONResponse);
+    rpc checkAPIKey (CheckAPIKeyRequest) returns (CheckAPIKeyResponse)
 } 
